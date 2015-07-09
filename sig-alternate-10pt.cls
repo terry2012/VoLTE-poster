@@ -684,16 +684,20 @@
     {\ttlfnt \@title\par}       % Title set in 18pt Helvetica (Arial) bold size.
     \vskip 1.5em                % Vertical space after title.
 %This should be the subtitle.
-{\subttlfnt \the\subtitletext\par}\vskip 1.25em%\fi
+{\subttlfnt \the\subtitletext\par}\vskip -0.25em%\fi %Alfred: was 1.25 em
     {\baselineskip 16pt\aufnt   % each author set in \12 pt Arial, in a
      \lineskip .5em             % tabular environment
      \begin{tabular}[t]{c}\@author
      \end{tabular}\par}
     \vskip 1.5em               % Vertical space after author.
    \end{center}}
+   %\vspace{-1.0in}
  \dimen0=\ht\@acmtitlebox
+ %\vspace{-0.25in}
  \advance\dimen0 by -12.75pc\relax % Increased space for title box -- KBT
+ \vspace{-0.25in}
  \unvbox\@acmtitlebox
+  \vspace{-0.4in}
  \ifdim\dimen0<0.0pt\relax\vskip-\dimen0\fi}
 
 
