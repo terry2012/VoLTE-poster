@@ -1,4 +1,4 @@
-SRC = secs/abstract.tex secs/intro.tex secs/background.tex secs/case.tex secs/overview.tex secs/diagnosis.tex secs/characterization.tex secs/conclusion.tex secs/related.tex paper.tex
+SRC = secs/abstract.tex secs/intro.tex secs/background.tex paper.tex
 
 #paper: paper.ps paper.pdf
 
