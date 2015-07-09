@@ -1,0 +1,199 @@
+% Change to use the correct class file for your paper.
+\documentclass{sig-alternate-10pt}[10]
+
+%\pagenumbering{arabic}
+\usepackage{pbox}
+\usepackage{pifont}
+\usepackage{multirow}
+\usepackage{amsfonts}     % Adds math fonts, commands such as \begin{align}
+\usepackage{array}        % Tables for use in math mode
+\usepackage{booktabs}     % Elegant table-formatting library
+\usepackage{bold-extra}   % Provides bf+sc (only in textbf+textsc env.)
+\usepackage[skip=5pt]{caption}
+\usepackage{color}        % Allow the use and definition of colors
+\usepackage{colortbl}     % Color table cells
+\usepackage{comment}      % Provides \begin,\end{comment} for large blocks
+\usepackage{endnotes}     % Footnotes pushed to the end of a document
+\usepackage{gensymb}      % Adds useful symbols w/out math mode, e.g. \degree
+\usepackage{graphicx}     % For importing graphics
+\usepackage{hyperref}     % Creates hyperlinks from ref/cite 
+\hypersetup{pdfstartview=FitH}
+\usepackage{listings}     % in-line source code (poorly, consider minted)
+\usepackage{multirow}     % Multiple row spacing in tables
+\usepackage{nth}          % Typeset 33rd correctly as \nth{33}
+%\usepackage[section]{placeins} % Don't let figs escape their sections
+\usepackage{rotating}     % Rotates any object, note sideways != sidewaysfigure
+%\usepackage[all=normal]{savetrees} % For when space is tight, read manual and
+                          % selectively enable things. CAN BREAK CONF STYLES!!
+\usepackage{soul}         % Provides \hl{} for highlighting
+%\usepackage{subfig}
+%\usepackage{subfigure}    % Complicated figure creation
+%\usepackage{subcaption}   % Replaces both subfig and subfigure
+\usepackage[nofancy]{svninfo} % svn information in docs (req. svn:keywords)
+\usepackage{tabularx}     % Complicated table creation
+\usepackage{threeparttable} % Add footnotes to a table
+\usepackage{units}        % For nice fractions, \nicefrac{1}{2} --> 1/2
+\usepackage{url}          % Pretty printing of hyperlinks
+\usepackage{xspace}       % Intelligently add spaces after commands
+\usepackage{times}
+\usepackage{breakurl}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+
+%\DeclareCaptionType{copyrightbox}
+
+%\newlength\SUBSIZE
+
+\columnseprule 0pt
+\renewcommand{\arraystretch}{1.2} % Space out rows in tables
+\renewcommand{\paragraph}[1]{\noindent \textbf{#1}\ \ \ \ }
+
+\newcommand{\PERFSENSE}{$\sf\small{PerfSense}$\xspace}
+\newcommand{\UMICH}{$\sf\small{UMICH}$\xspace}
+\newcommand{\UMICHLTE}{$\sf\small{UMICH\-LTE}$\xspace}
+\newcommand{\RC}{$\small{\textbf{\texttt{RRC\_CONNECTED}}}\normalsize$\xspace}
+\newcommand{\RI}{$\small{\textbf{\texttt{RRC\_IDLE}}}\normalsize$\xspace}
+\newcommand{\RCB}{${\textbf{\texttt{RRC\_CONNECTED}}}\normalsize$\xspace}
+\newcommand{\RIB}{${\textbf{\texttt{RRC\_IDLE}}}\normalsize$\xspace}
+\newcommand{\FT}{$\sf\small{4GTest}$\xspace}
+\newcommand{\TT}{$\sf\small{3GTest}$\xspace}
+
+\newcommand{\IGL}{\includegraphics[width=0.995\textwidth]}
+\newcommand{\IG}{\includegraphics[width=0.3\textwidth]}
+\newcommand{\IGML}{\includegraphics[width=0.47\textwidth]}
+\newcommand{\IGMM}{\includegraphics[width=0.385\textwidth]}
+\newcommand{\IGM}{\includegraphics[width=0.27\textwidth]}
+\newcommand{\IGS}{\includegraphics[width=0.23\textwidth]}
+
+\newcommand{\mycomment}[1]{{\color{red}[\textsf{#1}]}}
+\newcommand{\alfred}[1]{\textcolor{red}{\cut{[Alfred: #1]}}}
+\newcommand{\cut}[1]{}
+\newcommand{\umichauthor}{{\%}}
+%\setlength\paperheight {11in}
+%\setlength\paperwidth {8.5in}
+
+% Set the graphics path
+\graphicspath{{../figs/}{../images/build/}}
+
+% No space between bibliography items:
+\let\oldthebibliography=\thebibliography
+  \let\endoldthebibliography=\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{0ex}%
+      \setlength{\itemsep}{0ex}%
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+\setlength{\parindent}{5mm}
+
+\begin{document}
+
+\title{VoLTE Data Free-Ride Attack: A Case of Exploiting the Unprotected Voice Channel}
+\author{
+Yunhan Jack Jia, Qi Alfred Chen, Z.~Morley Mao,\\
+Alex Yoon$^\dagger$, Jie Hui$^\dagger$, Salvador Mendoza, Samson Kwong$^\dagger$, Kevin Lau$^\dagger$,Kranthi Sontineni$^\dagger$,
+\\
+University of Michigan, $^\dagger$T-Mobile USA Inc.
+\\
+%\{jackjia, alfchen, zmao\}@umich.edu,\\ $^\dagger$\{alex.yoon4, jie.hui, salvador.mendoza12, samson.kwong, kevin.lau, kranthi.sontineni1\}@t-mobile.com
+} 
+\iffalse
+\numberofauthors{2}
+\author{
+\small{
+    \alignauthor Yunhan Jack Jia, Qi Alfred Chen, and Z.~Morley Mao \\
+    \affaddr{University of Michigan} \\
+    %\email{\{jackjia, alfchen, zmao\}@umich.edu}
+    \alignauthor Alex Yoon, Jie Hui, Salvador Mendoza, Samson Kwong, Kevin Lau, Kranthi, Sontinei \\
+    \affaddr{T-Mobile USA Inc.$^1$}\\
+    %\email{\{alex.yoon4, jie.hui, salvador.mendoza12, samson.kwong, kevin.lau, kranthi.sontineni1,\}@t-mobile.com}
+}}
+\fi
+\iffalse
+\numberofauthors{8}
+\author{
+\alignauthor
+Yunhan Jack Jia \\
+	\affaddr{University of Michigan} \\
+	\email{\normalsize alfchen@umich.edu} \\
+\alignauthor
+Qi Alfred Chen \\
+	\affaddr{University of Michigan} \\
+	\email{\normalsize alfchen@umich.edu} \\
+\alignauthor
+Z.~Morley Mao \\
+	\affaddr{University of Michigan} \\
+	\email{\normalsize haokun@umich.edu} \\
+\alignauthor
+Jie Hui \\
+	\affaddr{University of Michigan} \\
+	\affaddr{Ann Arbor, MI} \\
+	\email{\normalsize sanae@umich.edu} \\
+\alignauthor
+Z. Morley Mao \\
+        \affaddr{University of Michigan} \\
+        \affaddr{Ann Arbor, MI} \\
+	\email{\normalsize zmao@umich.edu} \\
+\and
+\alignauthor
+Jie Hui \\
+        \affaddr{T-mobile} \\
+        \affaddr{Seattle, WA} \\
+        \email{\normalsize jie.hui@t-mobile.com} \\
+\alignauthor
+Karthik Iyer \\
+        \affaddr{T-mobile} \\
+        \affaddr{Seattle, WA} \\
+        \email{\normalsize karthik.iyer@t-mobile.com} \\
+\alignauthor
+Kevin Lau \\
+        \affaddr{T-mobile} \\
+        \affaddr{Seattle, WA} \\
+        \email{\normalsize kevin.Lau@t-mobile.com} \\
+}
+\fi
+
+%\conferenceinfo{EECS 582 -- Winter'13} {Jan 10--Apr 23, 2013, Ann Arbor, Michigan, USA.}
+%\CopyrightYear{2013}
+%\crdata{XXX-X-XXXXX-XXX-X}
+
+\maketitle
+
+\cut{
+%don't need this line for now since it is double-blind in submission
+\footnotetext[1]{The views presented in this paper are as individuals and do not necessarily reflect any position of T-Mobile.} 
+}
+
+\input{secs/abstract}
+
+%\category{C.2.1}{COM\-PU\-TER-COM\-MU\-NICATION
+%  NET\-WORKS}{Network Architecture and Design}[Wireless communication]
+%\category{B.8.0}{HARD\-WARE}{Performance and Reliability}[General]
+%\terms{Design, Experimentation, Measurement, Performance}
+%\keywords{Cellular, Mobile, Throughput, Energy, Context, Prediction, LTE, HSPA}
+
+%\newpage
+
+% page limit          % 14.0 pg
+% abstract            %  0.5 pg
+%\vfill\eject
+\input{secs/intro.tex}         % 1.5 pg
+\input{secs/background.tex}
+%Uncomment this line if your paper has / uses end notes
+%\theendnotes
+
+{
+\footnotesize
+\raggedright
+\bibliographystyle{abbrv}
+\bibliography{paper}
+}
+
+%\input{title}
+
+
+\end{document}
+
